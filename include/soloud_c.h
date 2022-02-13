@@ -149,6 +149,7 @@ typedef void * FreeverbFilter;
 typedef void * LofiFilter;
 typedef void * Monotone;
 typedef void * Noise;
+typedef void * Modplug;
 typedef void * Openmpt;
 typedef void * Queue;
 typedef void * RobotizeFilter;
@@ -486,6 +487,29 @@ double Noise_getLoopPoint(Noise * aNoise);
 void Noise_setFilter(Noise * aNoise, unsigned int aFilterId, Filter * aFilter);
 void Noise_stop(Noise * aNoise);
 
+/*
+ * Modplug
+ */
+void Modplug_destroy(Modplug * aModplug);
+Modplug * Modplug_create();
+int Modplug_load(Modplug * aModplug, const char * aFilename);
+int Modplug_loadMem(Modplug * aModplug, unsigned char * aMem, unsigned int aLength);
+int Modplug_loadMemEx(Modplug * aModplug, unsigned char * aMem, unsigned int aLength, int aCopy /* = false */, int aTakeOwnership /* = true */);
+int Modplug_loadFile(Modplug * aModplug, File * aFile);
+void Modplug_setVolume(Modplug * aModplug, float aVolume);
+void Modplug_setLooping(Modplug * aModplug, int aLoop);
+void Modplug_set3dMinMaxDistance(Modplug * aModplug, float aMinDistance, float aMaxDistance);
+void Modplug_set3dAttenuation(Modplug * aModplug, unsigned int aAttenuationModel, float aAttenuationRolloffFactor);
+void Modplug_set3dDopplerFactor(Modplug * aModplug, float aDopplerFactor);
+void Modplug_set3dProcessing(Modplug * aModplug, int aDo3dProcessing);
+void Modplug_set3dListenerRelative(Modplug * aModplug, int aListenerRelative);
+void Modplug_set3dDistanceDelay(Modplug * aModplug, int aDistanceDelay);
+void Modplug_set3dCollider(Modplug * aModplug, AudioCollider * aCollider);
+void Modplug_set3dColliderEx(Modplug * aModplug, AudioCollider * aCollider, int aUserData /* = 0 */);
+void Modplug_set3dAttenuator(Modplug * aModplug, AudioAttenuator * aAttenuator);
+void Modplug_setInaudibleBehavior(Modplug * aModplug, int aMustTick, int aKill);
+void Modplug_setFilter(Modplug * aModplug, unsigned int aFilterId, Filter * aFilter);
+void Modplug_stop(Modplug * aModplug);
 /*
  * Openmpt
  */

@@ -14,6 +14,7 @@ local WITH_COREAUDIO = 0
 local WITH_VITA_HOMEBREW = 0
 local WITH_NOSOUND = 0
 local WITH_MINIAUDIO = 0
+local WITH_LIBMODPLUG = 1
 local WITH_NULL = 1
 local WITH_TOOLS = 0
 
@@ -120,6 +121,11 @@ newoption {
 }
 
 newoption {
+	trigger		  = "with-libmodplug",
+	description = "Include libmodplug in build"
+}
+
+newoption {
 	trigger		  = "with-tools",
 	description = "Include (optional) tools in build"
 }
@@ -174,6 +180,7 @@ if _OPTIONS["soloud-devel"] then
     	WITH_OSS = 0
     end
     WITH_TOOLS = 1
+    WITH_LIBMODPLUG = 1
 end
 
 if _OPTIONS["with-common-backends"] then
@@ -392,6 +399,10 @@ if _OPTIONS["with-native-only"] then
 	end
 end
 
+if _OPTIONS["with-libmodplug"] then
+	WITH_LIBMODPLUG = 1
+end
+
 if _OPTIONS["with-tools"] then
 	WITH_TOOLS = 1
 end
@@ -411,6 +422,7 @@ print ("WITH_OSS        = ", WITH_OSS)
 print ("WITH_MINIAUDIO  = ", WITH_MINIAUDIO)
 print ("WITH_NOSOUND    = ", WITH_NOSOUND)
 print ("WITH_COREAUDIO  = ", WITH_COREAUDIO)
+print ("WITH_LIBMODPLUG = ", WITH_LIBMODPLUG)
 print ("WITH_VITA_HOMEBREW = ", WITH_VITA_HOMEBREW)
 print ("WITH_TOOLS      = ", WITH_TOOLS)
 print ("")
@@ -485,6 +497,9 @@ end
 		  links { "pthread" }
 		  links { "dl" }
 		end
+if (WITH_LIBMODPLUG == 1) then
+		links {"libmodplug"}
+end
 
 		targetname "simplest"
 
@@ -514,6 +529,9 @@ end
 		  links { "pthread" }
 		  links { "dl" }
         end
+if (WITH_LIBMODPLUG == 1) then
+		links {"libmodplug"}
+end
 
 		targetname "welcome"
 
@@ -573,8 +591,34 @@ end
 		  links { "pthread" }
 		  links { "dl" }
 		end
+if (WITH_LIBMODPLUG == 1) then
+		links {"libmodplug"}
+end
 
 		targetname "enumerate"
+
+-- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< --
+
+if (WITH_LIBMODPLUG == 1) then
+	project "libmodplug"
+		kind "StaticLib"
+		targetdir "../lib"
+		language "C++"
+
+		defines { "MODPLUG_STATIC" }
+
+		files
+		{
+		"../ext/libmodplug/src/**.cpp*"
+	  }
+
+		includedirs
+		{
+		"../ext/libmodplug/src/**"
+		}
+
+		targetname "libmodplug"
+end
 
 -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< --
 
@@ -607,6 +651,12 @@ end
 		kind "StaticLib"
 		targetdir "../lib"
 		language "C++"
+
+		defines { "MODPLUG_STATIC" }
+if (WITH_LIBMODPLUG == 1) then
+		defines { "WITH_MODPLUG" }
+end
+
 
 		files
 		{
@@ -843,6 +893,9 @@ if (WITH_TOOLS == 1) then
 		files {
 		  "../src/tools/codegen/**.cpp"
 		}
+if (WITH_LIBMODPLUG == 1) then
+		defines { "WITH_MODPLUG" }
+end
 		targetname "codegen"
 end
 
@@ -892,6 +945,9 @@ end
 		  links { "pthread" }
 		  links { "dl" }
 		end
+if (WITH_LIBMODPLUG == 1) then
+		links {"libmodplug"}
+end
 if (WITH_ALSA == 1) then
 	links {"asound"}
 end
@@ -923,6 +979,10 @@ end
 		}
 
 		links {"SoloudStatic"}
+
+if (WITH_LIBMODPLUG == 1) then
+		links {"libmodplug"}
+end
 
 if (os.is("Windows")) then
 	linkoptions { "/DEF:\"../../src/c_api/soloud.def\"" }

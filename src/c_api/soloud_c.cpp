@@ -46,6 +46,7 @@ freely, subject to the following restrictions:
 #include "../include/soloud_lofifilter.h"
 #include "../include/soloud_monotone.h"
 #include "../include/soloud_noise.h"
+#include "../include/soloud_modplug.h"
 #include "../include/soloud_openmpt.h"
 #include "../include/soloud_queue.h"
 #include "../include/soloud_robotizefilter.h"
@@ -1407,6 +1408,124 @@ int LofiFilter_setParams(void * aClassPtr, float aSampleRate, float aBitdepth)
 {
 	LofiFilter * cl = (LofiFilter *)aClassPtr;
 	return cl->setParams(aSampleRate, aBitdepth);
+}
+
+void Modplug_destroy(void * aClassPtr)
+{
+  delete (Modplug *)aClassPtr;
+}
+
+void * Modplug_create()
+{
+  return (void *)new Modplug;
+}
+
+int Modplug_load(void * aClassPtr, const char * aFilename)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	return cl->load(aFilename);
+}
+
+int Modplug_loadMem(void * aClassPtr, unsigned char * aMem, unsigned int aLength)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	return cl->loadMem(aMem, aLength);
+}
+
+int Modplug_loadMemEx(void * aClassPtr, unsigned char * aMem, unsigned int aLength, int aCopy, int aTakeOwnership)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	return cl->loadMem(aMem, aLength, !!aCopy, !!aTakeOwnership);
+}
+
+int Modplug_loadFile(void * aClassPtr, File * aFile)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	return cl->loadFile(aFile);
+}
+
+void Modplug_setVolume(void * aClassPtr, float aVolume)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->setVolume(aVolume);
+}
+
+void Modplug_setLooping(void * aClassPtr, int aLoop)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->setLooping(!!aLoop);
+}
+
+void Modplug_set3dMinMaxDistance(void * aClassPtr, float aMinDistance, float aMaxDistance)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dMinMaxDistance(aMinDistance, aMaxDistance);
+}
+
+void Modplug_set3dAttenuation(void * aClassPtr, unsigned int aAttenuationModel, float aAttenuationRolloffFactor)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dAttenuation(aAttenuationModel, aAttenuationRolloffFactor);
+}
+
+void Modplug_set3dDopplerFactor(void * aClassPtr, float aDopplerFactor)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dDopplerFactor(aDopplerFactor);
+}
+
+void Modplug_set3dProcessing(void * aClassPtr, int aDo3dProcessing)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dProcessing(!!aDo3dProcessing);
+}
+
+void Modplug_set3dListenerRelative(void * aClassPtr, int aListenerRelative)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dListenerRelative(!!aListenerRelative);
+}
+
+void Modplug_set3dDistanceDelay(void * aClassPtr, int aDistanceDelay)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dDistanceDelay(!!aDistanceDelay);
+}
+
+void Modplug_set3dCollider(void * aClassPtr, AudioCollider * aCollider)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dCollider(aCollider);
+}
+
+void Modplug_set3dColliderEx(void * aClassPtr, AudioCollider * aCollider, int aUserData)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dCollider(aCollider, aUserData);
+}
+
+void Modplug_set3dAttenuator(void * aClassPtr, AudioAttenuator * aAttenuator)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->set3dAttenuator(aAttenuator);
+}
+
+void Modplug_setInaudibleBehavior(void * aClassPtr, int aMustTick, int aKill)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->setInaudibleBehavior(!!aMustTick, !!aKill);
+}
+
+void Modplug_setFilter(void * aClassPtr, unsigned int aFilterId, Filter * aFilter)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->setFilter(aFilterId, aFilter);
+}
+
+void Modplug_stop(void * aClassPtr)
+{
+	Modplug * cl = (Modplug *)aClassPtr;
+	cl->stop();
 }
 
 void Monotone_destroy(void * aClassPtr)

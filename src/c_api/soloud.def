@@ -271,6 +271,26 @@ EXPORTS
 	Noise_getLoopPoint
 	Noise_setFilter
 	Noise_stop
+	Modplug_destroy
+	Modplug_create
+	Modplug_load
+	Modplug_loadMem
+	Modplug_loadMemEx
+	Modplug_loadFile
+	Modplug_setVolume
+	Modplug_setLooping
+	Modplug_set3dMinMaxDistance
+	Modplug_set3dAttenuation
+	Modplug_set3dDopplerFactor
+	Modplug_set3dProcessing
+	Modplug_set3dListenerRelative
+	Modplug_set3dDistanceDelay
+	Modplug_set3dCollider
+	Modplug_set3dColliderEx
+	Modplug_set3dAttenuator
+	Modplug_setInaudibleBehavior
+	Modplug_setFilter
+	Modplug_stop
 	Openmpt_destroy
 	Openmpt_create
 	Openmpt_load

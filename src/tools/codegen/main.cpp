@@ -63,6 +63,9 @@ char *gIncludeFile[] =
 //	"../include/soloud_misc.h",
 	"../include/soloud_monotone.h",
 	"../include/soloud_noise.h",
+#if defined(WITH_MODPLUG)
+	"../include/soloud_modplug.h",
+#endif
 	"../include/soloud_openmpt.h",
 	"../include/soloud_queue.h",
 	"../include/soloud_robotizefilter.h",
