@@ -113,6 +113,9 @@ namespace SoLoud
 		}		
 	}
 
+	unsigned int AudioSourceInstance::getAudio(float *aBuffer, unsigned int aSamplesToRead, unsigned int aBufferSize) { return 0; }
+	bool AudioSourceInstance::hasEnded() {return true;}
+
 	void AudioSourceInstance::init(AudioSource &aSource, int aPlayIndex)
 	{
 		mPlayIndex = aPlayIndex;
@@ -267,6 +270,8 @@ namespace SoLoud
 			return;
 		mFilter[aFilterId] = aFilter;
 	}
+
+	AudioSourceInstance * AudioSource::createInstance() { return nullptr; }
 
 	void AudioSource::stop()
 	{
