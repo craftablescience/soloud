@@ -35,3 +35,5 @@ scripts/soloud_codegen.py
 glue/rpgmaker_soloud.rb
 *.lastcodeanalysissucceeded
 *.bak
+build/*.exe
+build/vs2019/
