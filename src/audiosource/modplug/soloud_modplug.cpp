@@ -51,9 +51,9 @@ namespace SoLoud
 	{
 #ifdef WITH_MODPLUG
 		if (mModplugfile == NULL)
-			return;
+			return 0;
 		int buf[1024];
-		int s = aSamples;
+		int s = aSamplesToRead;
 		unsigned int outofs = 0;
 		
 		while (s && mPlaying)
@@ -68,19 +68,21 @@ namespace SoLoud
 			for (i = 0; i < samples_in_buffer; i++)
 			{
 				aBuffer[outofs] = buf[i*2+0] / (float)0x7fffffff;
-				aBuffer[outofs + aSamples] = buf[i*2+1] / (float)0x7fffffff;
+				aBuffer[outofs + aSamplesToRead] = buf[i*2+1] / (float)0x7fffffff;
 				outofs++;
 			}
 			s -= samples_in_buffer;
 		}
 
-		if (outofs < aSamples)
+		if (outofs < aSamplesToRead)
 		{
 			// TODO: handle looping
 			unsigned int i;
-			for (i = outofs; i < aSamples; i++)
-				aBuffer[i] = aBuffer[i + aSamples] = 0;
+			for (i = outofs; i < aSamplesToRead; i++)
+				aBuffer[i] = aBuffer[i + aSamplesToRead] = 0;
 		}
+
+		return outofs;
 #endif		
 	}
 
