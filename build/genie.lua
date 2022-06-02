@@ -30,7 +30,7 @@ end
 -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< -- 8< --
 
 local sdl_root       = "/libraries/sdl"
-local sdl2_root      = "C:/Libraries/ESDL2"
+local sdl2_root      = "/libraries/sdl2"
 local dxsdk_root     = os.getenv("DXSDK_DIR") and os.getenv("DXSDK_DIR") or "C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)"
 local portaudio_root = "/libraries/portaudio"
 local openal_root    = "/libraries/openal"
