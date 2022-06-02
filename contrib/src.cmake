@@ -296,5 +296,7 @@ endif()
 
 target_link_libraries (${TARGET_NAME} ${LINK_LIBRARIES})
 
+target_compile_options(${TARGET_NAME} PUBLIC -msse4.1)
+
 include (Install)
 INSTALL(FILES ${TARGET_HEADERS} DESTINATION include/${TARGET_NAME})
