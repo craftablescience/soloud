@@ -148,21 +148,34 @@ if (SOLOUD_BACKEND_NULL)
 	add_definitions(-DWITH_NULL)
 endif()
 
-if (SOLOUD_BACKEND_SDL2)
+
+if (SOLOUD_BACKEND_SDL2 OR SOLOUD_BACKEND_SDL2_STATIC)
 	find_package (SDL2 REQUIRED)
+
 	include_directories (${SDL2_INCLUDE_DIR})
-	add_definitions (-DWITH_SDL2_STATIC)
-
-	set (BACKENDS_SOURCES
-		${BACKENDS_SOURCES}
-		${BACKENDS_PATH}/sdl2_static/soloud_sdl2_static.cpp
-	)
-
 	set (LINK_LIBRARIES
 		${LINK_LIBRARIES}
 		${SDL2_LIBRARY}
 	)
 
+	if (SOLOUD_BACKEND_SDL2)
+		add_definitions (-DWITH_SDL2)
+
+		set (BACKENDS_SOURCES
+			${BACKENDS_SOURCES}
+			${BACKENDS_PATH}/sdl/soloud_sdl2.cpp
+			${BACKENDS_PATH}/sdl/soloud_sdl2_dll.c
+		)
+	endif()
+
+	if (SOLOUD_BACKEND_SDL2_STATIC)
+		add_definitions (-DWITH_SDL2_STATIC)
+
+		set (BACKENDS_SOURCES
+			${BACKENDS_SOURCES}
+			${BACKENDS_PATH}/sdl2_static/soloud_sdl2_static.cpp
+		)
+	endif()
 endif()
 
 if (SOLOUD_BACKEND_ALSA)                     

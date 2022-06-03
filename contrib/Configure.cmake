@@ -17,8 +17,11 @@ print_option_status (SOLOUD_BUILD_DEMOS "Build demos")
 option (SOLOUD_BACKEND_NULL "Set to ON for building NULL backend" ON)
 print_option_status (SOLOUD_BACKEND_NULL "NULL backend")
 
-option (SOLOUD_BACKEND_SDL2 "Set to ON for building SDL2 backend" ON)
+option (SOLOUD_BACKEND_SDL2 "Set to ON for building SDL2 backend" OFF)
 print_option_status (SOLOUD_BACKEND_SDL2 "SDL2 backend")
+
+option (SOLOUD_BACKEND_SDL2_STATIC "Set to ON for building static SDL2 backend" OFF)
+print_option_status (SOLOUD_BACKEND_SDL2_STATIC "SDL2 backend (static)")
 
 option (SOLOUD_BACKEND_OPENSLES "Set to ON for building OpenSLES backend" OFF)
 print_option_status (SOLOUD_BACKEND_OPENSLES "OpenSLES backend")
