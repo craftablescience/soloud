@@ -273,6 +273,24 @@ if (SOLOUD_BACKEND_OPENSLES)
 endif()
 
 
+if (SOLOUD_BACKEND_PORTAUDIO)
+	find_package (PortAudio REQUIRED)
+
+	add_definitions (-DWITH_PORTAUDIO)
+
+	set (BACKENDS_SOURCES
+		${BACKENDS_SOURCES}
+		${BACKENDS_PATH}/portaudio/soloud_portaudio.cpp
+		${BACKENDS_PATH}/portaudio/soloud_portaudio_dll.c
+	)
+
+	set (LINK_LIBRARIES
+		${LINK_LIBRARIES}
+		PortAudio
+	)
+endif()
+
+
 if (SOLOUD_BACKEND_XAUDIO2)
 	add_definitions (-DWITH_XAUDIO2)
 

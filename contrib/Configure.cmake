@@ -35,6 +35,9 @@ print_option_status (SOLOUD_BACKEND_OPENAL "OpenAL backend")
 option (SOLOUD_BACKEND_OPENSLES "Set to ON for building OpenSLES backend" OFF)
 print_option_status (SOLOUD_BACKEND_OPENSLES "OpenSLES backend")
 
+option (SOLOUD_BACKEND_PORTAUDIO "Set to ON for building PortAudio backend" OFF)
+print_option_status (SOLOUD_BACKEND_PORTAUDIO "PortAudio backend")
+
 if (UNIX AND NOT APPLE)
 	option (SOLOUD_BACKEND_ALSA "Set to ON for building ALSA backend" ON)
 	print_option_status (SOLOUD_BACKEND_ALSA "ALSA backend")
