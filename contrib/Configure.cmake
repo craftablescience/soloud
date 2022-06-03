@@ -23,6 +23,9 @@ print_option_status (SOLOUD_BACKEND_SDL2 "SDL2 backend")
 option (SOLOUD_BACKEND_SDL2_STATIC "Set to ON for building static SDL2 backend" OFF)
 print_option_status (SOLOUD_BACKEND_SDL2_STATIC "SDL2 backend (static)")
 
+option (SOLOUD_BACKEND_MINIAUDIO "Set to ON for building miniaudio backend" ON)
+print_option_status (SOLOUD_BACKEND_MINIAUDIO "miniaudio backend")
+
 option (SOLOUD_BACKEND_OPENSLES "Set to ON for building OpenSLES backend" OFF)
 print_option_status (SOLOUD_BACKEND_OPENSLES "OpenSLES backend")
 
