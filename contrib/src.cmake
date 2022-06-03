@@ -274,7 +274,28 @@ endif()
 
 
 if (SOLOUD_BACKEND_PORTAUDIO)
-	find_package (PortAudio REQUIRED)
+	find_package (PortAudio QUIET)
+
+	if (NOT PortAudio_FOUND)
+		find_library(PORTAUDIO_LIBRARY portaudio)
+		find_path(PORTAUDIO_INCLUDE_DIR portaudio.h)
+
+		if (NOT PORTAUDIO_LIBRARY)
+			message (FATAL_ERROR "PortAudio library not found")
+		endif()
+
+		include_directories(${PORTAUDIO_INCLUDE_DIR})
+
+		set (LINK_LIBRARIES
+			${LINK_LIBRARIES}
+			${PORTAUDIO_LIBRARY}
+		)
+	else()
+		set (LINK_LIBRARIES
+			${LINK_LIBRARIES}
+			PortAudio
+		)
+	endif()
 
 	add_definitions (-DWITH_PORTAUDIO)
 
@@ -282,11 +303,6 @@ if (SOLOUD_BACKEND_PORTAUDIO)
 		${BACKENDS_SOURCES}
 		${BACKENDS_PATH}/portaudio/soloud_portaudio.cpp
 		${BACKENDS_PATH}/portaudio/soloud_portaudio_dll.c
-	)
-
-	set (LINK_LIBRARIES
-		${LINK_LIBRARIES}
-		PortAudio
 	)
 endif()
 
