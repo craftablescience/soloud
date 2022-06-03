@@ -43,6 +43,7 @@ static dll_openmpt_module_set_repeat_count d_openmpt_module_set_repeat_count = N
 static HMODULE openDll()
 {
 	HMODULE res = LoadLibrary("libopenmpt.dll");
+	if (res == 0) res = LoadLibrary("libopenmpt-0.dll");
 	return res;
 }
 

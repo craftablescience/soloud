@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
 	} 
 	else 
 	{
-		printf("%s\n", "Cannot find audio/BRUCE.S3M (or --with-libmodplug build option may be missing)");
+		printf("%s\n", "Cannot find audio/BRUCE.S3M (or failed to link openmpt dll");
 	}
 
 	// Clean up SoLoud
