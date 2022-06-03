@@ -178,6 +178,31 @@ if (SOLOUD_BACKEND_SDL2 OR SOLOUD_BACKEND_SDL2_STATIC)
 	endif()
 endif()
 
+
+if (SOLOUD_BACKEND_JACK)
+	find_library(JACK_LIBRARY jack)
+	find_path(JACK_INCLUDE_DIR jack/jack.h)
+
+	if (NOT JACK_LIBRARY)
+		message (FATAL_ERROR "Jack library not found")
+	endif()
+
+	include_directories(${JACK_INCLUDE_DIR})
+
+	set (LINK_LIBRARIES
+		${LINK_LIBRARIES}
+		${JACK_LIBRARY}
+	)
+
+	add_definitions (-DWITH_JACK)
+
+	set (BACKENDS_SOURCES
+		${BACKENDS_SOURCES}
+		${BACKENDS_PATH}/jack/soloud_jack.cpp
+	)
+endif()
+
+
 if (SOLOUD_BACKEND_ALSA)                     
     add_definitions (-DWITH_ALSA)                
                                            
