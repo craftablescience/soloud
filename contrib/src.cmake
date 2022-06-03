@@ -367,6 +367,57 @@ if (SOLOUD_BACKEND_WASAPI)
 	)
 endif()
 
+
+if (SOLOUD_LIBMODPLUG_SUPPORT OR SOLOUD_LIBMODPLUG_SUPPORT_STATIC)
+	add_definitions (-DWITH_MODPLUG)
+	
+	if (SOLOUD_LIBMODPLUG_SUPPORT_STATIC)
+		add_definitions (-DMODPLUG_STATIC)
+	endif()
+
+	set (AUDIOSOURCES_SOURCES
+		${AUDIOSOURCES_SOURCES}
+		${AUDIOSOURCES_PATH}/modplug/soloud_modplug.cpp
+	)
+
+	set (TARGET_HEADERS
+		${TARGET_HEADERS}
+		${HEADER_PATH}/soloud_modplug.h
+	)
+
+  find_library(MODPLUG_LIBRARY modplug)
+  find_path(MODPLUG_INCLUDE_DIR libmodplug/modplug.h)
+
+  if (NOT MODPLUG_LIBRARY OR NOT MODPLUG_INCLUDE_DIR)
+    add_subdirectory(../ext/libmodplug ${CMAKE_CURRENT_BINARY_DIR}/ext)
+
+    install(
+      TARGETS modplug
+      EXPORT modplugTargets
+    )
+
+    install(
+      EXPORT modplugTargets
+      DESTINATION ${CMAKE_INSTALL_LIBDIR}/modplug/cmake
+    )
+
+    include_directories(${libmodplug_SOURCE_DIR}/src)
+    
+    set (LINK_LIBRARIES
+		  ${LINK_LIBRARIES}
+		  modplug
+	  )
+  else()
+    include_directories(${MODPLUG_INCLUDE_DIR}/libmodplug)
+    
+    set (LINK_LIBRARIES
+		  ${LINK_LIBRARIES}
+		  ${MODPLUG_LIBRARY}
+	  )
+  endif()
+endif()
+
+
 # Filters
 set (FILTERS_PATH ${SOURCE_PATH}/filter)
 set (FILTERS_SOURCES

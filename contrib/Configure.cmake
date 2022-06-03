@@ -64,5 +64,11 @@ if (WIN32)
 	print_option_status (SOLOUD_BACKEND_WASAPI "WASAPI backend")
 endif()
 
+option (SOLOUD_LIBMODPLUG_SUPPORT "Set to ON for libmodplug support" OFF)
+print_option_status (SOLOUD_LIBMODPLUG_SUPPORT "Enable libmodplug support")
+
+option (SOLOUD_LIBMODPLUG_SUPPORT_STATIC "Set to ON for libmodplug support (static)" OFF)
+print_option_status (SOLOUD_LIBMODPLUG_SUPPORT_STATIC "Enable libmodplug support (static)")
+
 option (SOLOUD_GENERATE_GLUE "Set to ON for generating the Glue APIs" OFF)
 print_option_status (SOLOUD_GENERATE_GLUE "Generate Glue")
