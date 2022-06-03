@@ -136,7 +136,9 @@ set (AUDIOSOURCES_SOURCES
 
 
 # Backends
-# TODO: Other backends
+# TODO: Other backends (OSS, SDL, Vita homebrew)
+# OSS: https://github.com/PortAudio/portaudio/blob/master/cmake/modules/FindOSS.cmake
+
 set (BACKENDS_PATH ${SOURCE_PATH}/backend)
 set (BACKENDS_SOURCES)
 
