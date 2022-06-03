@@ -29,6 +29,9 @@ print_option_status (SOLOUD_BACKEND_MINIAUDIO "miniaudio backend")
 option (SOLOUD_BACKEND_NOSOUND "Set to ON for building nosound backend" ON)
 print_option_status (SOLOUD_BACKEND_NOSOUND "nosound backend")
 
+option (SOLOUD_BACKEND_OPENAL "Set to ON for building OpenAL backend" OFF)
+print_option_status (SOLOUD_BACKEND_OPENAL "OpenAL backend")
+
 option (SOLOUD_BACKEND_OPENSLES "Set to ON for building OpenSLES backend" OFF)
 print_option_status (SOLOUD_BACKEND_OPENSLES "OpenSLES backend")
 

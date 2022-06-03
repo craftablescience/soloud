@@ -234,6 +234,29 @@ if (SOLOUD_BACKEND_NOSOUND)
 endif()
 
 
+if (SOLOUD_BACKEND_OPENAL OR SOLOUD_BACKEND_OPENAL_STATIC)
+	find_package (OpenAL REQUIRED)
+
+	include_directories(${OPENAL_INCLUDE_DIR})
+	set (LINK_LIBRARIES
+		${LINK_LIBRARIES}
+		${OPENAL_LIBRARY}
+	)
+
+	add_definitions (-DWITH_OPENAL)
+
+  if (SOLOUD_BACKEND_OPENAL_STATIC)
+		add_definitions (-DSOLOUD_STATIC_OPENAL)
+	endif()
+
+	set (BACKENDS_SOURCES
+		${BACKENDS_SOURCES}
+		${BACKENDS_PATH}/openal/soloud_openal.cpp
+		${BACKENDS_PATH}/openal/soloud_openal_dll.c
+	)
+endif()
+
+
 if (SOLOUD_BACKEND_OPENSLES)
 	add_definitions (-DWITH_OPENSLES)
 
