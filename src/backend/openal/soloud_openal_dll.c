@@ -109,6 +109,7 @@ static HMODULE oal_openDll()
 {
 	HMODULE x = LoadLibraryA("soft_oal.dll");
 	if (x == 0) x = LoadLibraryA("OpenAL32.dll");
+	if (x == 0) x = LoadLibraryA("libopenal-1.dll");
 	return x;
 }
 
