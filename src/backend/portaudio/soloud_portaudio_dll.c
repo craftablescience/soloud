@@ -59,6 +59,7 @@ static Pa_OpenDefaultStreamProc dPa_OpenDefaultStream = NULL;
 static HMODULE pta_openDll()
 {
     HMODULE dllh = LoadLibrary("portaudio_x86.dll");
+    if (dllh == 0) dllh = LoadLibrary("libportaudio.dll");
     return dllh;
 }
 
