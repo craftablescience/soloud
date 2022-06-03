@@ -41,8 +41,10 @@ freely, subject to the following restrictions:
 
 #ifdef SOLOUD_STATIC_OPENAL
 
+#ifdef __cplusplus
 extern "C"
 {
+#endif
 
 // statically linked OpenAL
 int dll_al_found() { return 1; }
@@ -62,7 +64,9 @@ void dll_al_DeleteBuffers(ALsizei n, ALuint *buffers) { alDeleteBuffers(n, buffe
 void dll_al_GenSources(ALsizei n, ALuint *sources) { alGenSources(n, sources); }
 void dll_al_DeleteSources(ALsizei n, ALuint *sources) { alDeleteSources(n, sources); }
 
+#ifdef __cplusplus
 }
+#endif
 
 #else
 
