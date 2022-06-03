@@ -224,6 +224,16 @@ if (SOLOUD_BACKEND_MINIAUDIO)
 endif()
 
 
+if (SOLOUD_BACKEND_NOSOUND)
+	add_definitions (-DWITH_NOSOUND)
+
+	set (BACKENDS_SOURCES
+		${BACKENDS_SOURCES}
+		${BACKENDS_PATH}/nosound/soloud_nosound.cpp
+	)
+endif()
+
+
 if (SOLOUD_BACKEND_OPENSLES)
 	add_definitions (-DWITH_OPENSLES)
 
