@@ -26,7 +26,7 @@ freely, subject to the following restrictions:
 #include <stdio.h>
 #include "soloud_modplug.h"
 #ifdef WITH_MODPLUG
-#include "../../ext/libmodplug/src/modplug.h"
+#include "modplug.h"
 #endif
 #include "soloud_file.h"
 
