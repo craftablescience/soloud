@@ -344,6 +344,11 @@ if (SOLOUD_BACKEND_XAUDIO2)
 		${BACKENDS_SOURCES}
 		${BACKENDS_PATH}/xaudio2/soloud_xaudio2.cpp
 	)
+
+	set (LINK_LIBRARIES
+		${LINK_LIBRARIES}
+		xaudio2_8
+	)
 endif()
 
 if (SOLOUD_BACKEND_WINMM)
