@@ -1,6 +1,24 @@
 set (HEADER_PATH ../include)
 set (SOURCE_PATH ../demos)
 
+set (COMMON_SOURCES
+	${SOURCE_PATH}/common/glew/GL/glew.c
+	${SOURCE_PATH}/common/imgui/imgui.cpp
+	${SOURCE_PATH}/common/imgui/imgui_demo.cpp
+	${SOURCE_PATH}/common/imgui/imgui_draw.cpp
+	${SOURCE_PATH}/common/soloud_demo_framework.cpp
+)
+
+if (SOLOUD_STATIC)
+  add_definitions(-DGLEW_STATIC)
+endif()
+
+include_directories (${SOURCE_PATH}/common)
+include_directories (${SOURCE_PATH}/common/glew)
+include_directories (${SOURCE_PATH}/common/imgui)
+
+find_package(OpenGL REQUIRED)
+
 function (soloud_add_demo name sources)
 	set (TARGET_NAME SoLoud_${name})
 	add_executable (${TARGET_NAME} ${sources})
@@ -8,31 +26,15 @@ function (soloud_add_demo name sources)
 	include (Install)
 endfunction()
 
-include_directories (${SOURCE_PATH}/common)
-include_directories (${SOURCE_PATH}/common/imgui)
-
-
-# soloud_add_demo(c_test ${SOURCE_PATH}/c_test/main.c)
 soloud_add_demo(enumerate ${SOURCE_PATH}/enumerate/main.cpp)
-# soloud_add_demo(env ${SOURCE_PATH}/env/main.cpp)
-# soloud_add_demo(megademo
-# 	${SOURCE_PATH}/megademo/3dtest.cpp
-# 	${SOURCE_PATH}/megademo/main.cpp
-# 	${SOURCE_PATH}/megademo/mixbusses.cpp
-# 	${SOURCE_PATH}/megademo/monotone.cpp
-# 	${SOURCE_PATH}/megademo/multimusic.cpp
-# 	${SOURCE_PATH}/megademo/pewpew.cpp
-# 	${SOURCE_PATH}/megademo/radiogaga.cpp
-# 	${SOURCE_PATH}/megademo/space.cpp
-# 	${SOURCE_PATH}/megademo/speechfilter.cpp
-# 	${SOURCE_PATH}/megademo/tedsid.cpp
-# 	${SOURCE_PATH}/megademo/virtualvoices.cpp
-# )
 soloud_add_demo(null ${SOURCE_PATH}/null/main.cpp)
-# soloud_add_demo(piano
-# 	${SOURCE_PATH}/piano/main.cpp
-# 	${SOURCE_PATH}/piano/soloud_basicwave.cpp
-# 	${SOURCE_PATH}/piano/soloud_padsynth.cpp
-# )
 soloud_add_demo(simplest ${SOURCE_PATH}/simplest/main.cpp)
 soloud_add_demo(welcome ${SOURCE_PATH}/welcome/main.cpp)
+
+if (SOLOUD_C_API)
+	soloud_add_demo(c_test ${SOURCE_PATH}/c_test/main.c)
+endif()
+
+include (demo_env.cmake)
+include (demo_megademo.cmake)
+include (demo_piano.cmake)
