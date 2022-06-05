@@ -1474,12 +1474,6 @@ void Modplug_set3dDopplerFactor(void * aClassPtr, float aDopplerFactor)
 	cl->set3dDopplerFactor(aDopplerFactor);
 }
 
-void Modplug_set3dProcessing(void * aClassPtr, int aDo3dProcessing)
-{
-	Modplug * cl = (Modplug *)aClassPtr;
-	cl->set3dProcessing(!!aDo3dProcessing);
-}
-
 void Modplug_set3dListenerRelative(void * aClassPtr, int aListenerRelative)
 {
 	Modplug * cl = (Modplug *)aClassPtr;

@@ -501,7 +501,6 @@ void Modplug_setLooping(Modplug * aModplug, int aLoop);
 void Modplug_set3dMinMaxDistance(Modplug * aModplug, float aMinDistance, float aMaxDistance);
 void Modplug_set3dAttenuation(Modplug * aModplug, unsigned int aAttenuationModel, float aAttenuationRolloffFactor);
 void Modplug_set3dDopplerFactor(Modplug * aModplug, float aDopplerFactor);
-void Modplug_set3dProcessing(Modplug * aModplug, int aDo3dProcessing);
 void Modplug_set3dListenerRelative(Modplug * aModplug, int aListenerRelative);
 void Modplug_set3dDistanceDelay(Modplug * aModplug, int aDistanceDelay);
 void Modplug_set3dCollider(Modplug * aModplug, AudioCollider * aCollider);
