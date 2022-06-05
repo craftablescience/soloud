@@ -18,6 +18,13 @@ include_directories (${SOURCE_PATH}/common/glew)
 include_directories (${SOURCE_PATH}/common/imgui)
 
 find_package(OpenGL REQUIRED)
+find_package(SDL2 REQUIRED)
+
+include_directories (${SDL2_INCLUDE_DIR})
+set (LINK_LIBRARIES
+	${LINK_LIBRARIES}
+	${SDL2_LIBRARY}
+)
 
 function (soloud_add_demo name sources)
 	set (TARGET_NAME SoLoud_${name})
