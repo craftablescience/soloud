@@ -31,11 +31,21 @@ typedef void * (*dll_openmpt_module_create_from_memory)(const void * filedata, s
 typedef void (*dll_openmpt_module_destroy)(void * mod);
 typedef int (*dll_openmpt_module_read_float_stereo)(void * mod, int samplerate, size_t count, float * left, float * right);
 typedef void (*dll_openmpt_module_set_repeat_count)(void* mod, int repeat_count);
+typedef void (*dll_openmpt_module_set_position_order_row)(void* mod, int order, int row);
+typedef int (*dll_openmpt_module_get_current_tempo)(void* mod);
+typedef int (*dll_openmpt_module_get_current_order)(void* mod);
+typedef int (*dll_openmpt_module_get_current_pattern)(void* mod);
+typedef int (*dll_openmpt_module_get_current_row)(void* mod);
 
 static dll_openmpt_module_create_from_memory d_openmpt_module_create_from_memory = NULL;
 static dll_openmpt_module_destroy d_openmpt_module_destroy = NULL;
 static dll_openmpt_module_read_float_stereo d_openmpt_module_read_float_stereo = NULL;
 static dll_openmpt_module_set_repeat_count d_openmpt_module_set_repeat_count = NULL;
+static dll_openmpt_module_set_position_order_row d_openmpt_module_set_position_order_row = NULL;
+static dll_openmpt_module_get_current_tempo d_openmpt_module_get_current_tempo = NULL;
+static dll_openmpt_module_get_current_order d_openmpt_module_get_current_order = NULL;
+static dll_openmpt_module_get_current_pattern d_openmpt_module_get_current_pattern = NULL;
+static dll_openmpt_module_get_current_row d_openmpt_module_get_current_row = NULL;
 
 #ifdef WINDOWS_VERSION
 #include <windows.h>
@@ -102,13 +112,23 @@ static int load_dll()
 		d_openmpt_module_destroy = (dll_openmpt_module_destroy)getDllProc(dll, "openmpt_module_destroy");
 		d_openmpt_module_read_float_stereo = (dll_openmpt_module_read_float_stereo)getDllProc(dll, "openmpt_module_read_float_stereo");
 		d_openmpt_module_set_repeat_count = (dll_openmpt_module_set_repeat_count)getDllProc(dll, "openmpt_module_set_repeat_count");
+		d_openmpt_module_set_position_order_row = (dll_openmpt_module_set_position_order_row)getDllProc(dll, "openmpt_module_set_position_order_row");
+		d_openmpt_module_get_current_tempo = (dll_openmpt_module_get_current_tempo)getDllProc(dll, "openmpt_module_get_current_tempo");
+		d_openmpt_module_get_current_order = (dll_openmpt_module_get_current_order)getDllProc(dll, "openmpt_module_get_current_order");
+		d_openmpt_module_get_current_pattern = (dll_openmpt_module_get_current_pattern)getDllProc(dll, "openmpt_module_get_current_pattern");
+		d_openmpt_module_get_current_row = (dll_openmpt_module_get_current_row)getDllProc(dll, "openmpt_module_get_current_row");
 
 
 
 		if (d_openmpt_module_create_from_memory &&
 			d_openmpt_module_destroy &&
 			d_openmpt_module_read_float_stereo &&
-			d_openmpt_module_set_repeat_count)
+			d_openmpt_module_set_repeat_count &&
+			d_openmpt_module_set_position_order_row &&
+			d_openmpt_module_get_current_tempo &&
+			d_openmpt_module_get_current_order &&
+			d_openmpt_module_get_current_pattern &&
+			d_openmpt_module_get_current_row)
 		{
 			return 1;
 		}
@@ -141,4 +161,34 @@ void openmpt_module_set_repeat_count(void* mod, int repeat_count)
 {
 	if (load_dll())
 		d_openmpt_module_set_repeat_count(mod, repeat_count);
+}
+
+void openmpt_module_set_position_order_row(void* mod, int order, int row)
+{
+	if (load_dll())
+		d_openmpt_module_set_position_order_row(mod, order, row);
+}
+
+int openmpt_module_get_current_tempo(void* mod)
+{
+	if (load_dll())
+		d_openmpt_module_get_current_tempo(mod);
+}
+
+int openmpt_module_get_current_order(void* mod)
+{
+	if (load_dll())
+		d_openmpt_module_get_current_order(mod);
+}
+
+int openmpt_module_get_current_pattern(void* mod)
+{
+	if (load_dll())
+		d_openmpt_module_get_current_pattern(mod);
+}
+
+int openmpt_module_get_current_row(void* mod)
+{
+	if (load_dll())
+		d_openmpt_module_get_current_row(mod);
 }

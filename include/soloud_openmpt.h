@@ -43,6 +43,11 @@ namespace SoLoud
 		virtual ~OpenmptInstance();
 		virtual unsigned int getAudio(float *aBuffer, unsigned int aSamplesToRead, unsigned int aBufferSize);
 		virtual bool hasEnded();
+		virtual void setPositionOrderRow(int order, int row);
+		virtual int getCurrentTempo();
+		virtual int getCurrentOrder();
+		virtual int getCurrentPattern();
+		virtual int getCurrentRow();
 	};
 
 	class Openmpt : public AudioSource

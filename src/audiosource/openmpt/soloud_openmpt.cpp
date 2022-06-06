@@ -33,6 +33,11 @@ extern "C"
 	void openmpt_module_destroy(void * mod);
 	int openmpt_module_read_float_stereo(void * mod, int samplerate, size_t count, float * left, float * right);
 	void openmpt_module_set_repeat_count(void* mod, int repeat_count);
+	void openmpt_module_set_position_order_row(void* mod, int order, int row);
+	int openmpt_module_get_current_tempo(void* mod);
+	int openmpt_module_get_current_order(void* mod);
+	int openmpt_module_get_current_pattern(void* mod);
+	int openmpt_module_get_current_row(void* mod);
 }
 
 namespace SoLoud
@@ -81,6 +86,36 @@ namespace SoLoud
 			openmpt_module_destroy(mModfile);
 		}
 		mModfile = 0;
+	}
+
+	void OpenmptInstance::setPositionOrderRow(int order, int row)
+	{
+		if (mModfile)
+			openmpt_module_set_position_order_row(mModfile, order, row);
+	}
+
+	int OpenmptInstance::getCurrentTempo()
+	{
+		if (mModfile)
+			return openmpt_module_get_current_tempo(mModfile);
+	}
+
+	int OpenmptInstance::getCurrentOrder()
+	{
+		if (mModfile)
+			return openmpt_module_get_current_order(mModfile);
+	}
+
+	int OpenmptInstance::getCurrentPattern()
+	{
+		if (mModfile)
+			return openmpt_module_get_current_pattern(mModfile);
+	}
+
+	int OpenmptInstance::getCurrentRow()
+	{
+		if (mModfile)
+			return openmpt_module_get_current_row(mModfile);
 	}
 
 	result Openmpt::loadMem(const unsigned char *aMem, unsigned int aLength, bool aCopy, bool aTakeOwnership)
