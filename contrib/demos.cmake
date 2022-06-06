@@ -24,6 +24,8 @@ include_directories (${SDL2_INCLUDE_DIR})
 set (LINK_LIBRARIES
 	${LINK_LIBRARIES}
 	${SDL2_LIBRARY}
+	OpenGL::GL
+	soloud
 )
 
 function (soloud_add_demo name sources)

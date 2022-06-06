@@ -15,5 +15,5 @@ elseif (APPLE)
 	target_compile_definitions(${TARGET_NAME} PRIVATE "__MACOSX_CORE__")
 endif()
 
-target_link_libraries (${TARGET_NAME} soloud OpenGL::GL)
+target_link_libraries (${TARGET_NAME} ${LINK_LIBRARIES})
 include (Install)

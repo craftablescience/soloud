@@ -19,5 +19,5 @@ add_executable(${TARGET_NAME}
 	${SOURCE_PATH}/megademo/wavformats.cpp
 	${COMMON_SOURCES}
 )
-target_link_libraries (${TARGET_NAME} soloud OpenGL::GL)
+target_link_libraries (${TARGET_NAME} ${LINK_LIBRARIES})
 include (Install)
