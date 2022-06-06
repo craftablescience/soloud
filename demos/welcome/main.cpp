@@ -31,7 +31,7 @@ freely, subject to the following restrictions:
 #include "soloud_wav.h"
 #include "soloud_thread.h"
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(_WIN32)
 #include <conio.h>
 int mygetch()
 {

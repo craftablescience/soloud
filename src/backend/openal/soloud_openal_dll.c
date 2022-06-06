@@ -35,7 +35,7 @@ freely, subject to the following restrictions:
 #include "AL/alext.h"
 #endif
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(_WIN32)
 #define WINDOWS_VERSION
 #endif
 

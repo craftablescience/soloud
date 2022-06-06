@@ -1113,7 +1113,7 @@ void inherit_stuff()
 	}
 }
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(_WIN32)
   #define strcasecmp _stricmp
 #endif
 

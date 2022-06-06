@@ -39,7 +39,7 @@ namespace SoLoud
 
 #include <windows.h>
 
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(_WIN32)
 #include <xaudio2.h>
 #pragma comment(lib, "xaudio2.lib")
 #else

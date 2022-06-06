@@ -31,7 +31,7 @@ freely, subject to the following restrictions:
 #ifdef SOLOUD_NO_ASSERTS
 #define SOLOUD_ASSERT(x)
 #else
-#ifdef _MSC_VER
+#if defined(_MSC_VER) || defined(_WIN32)
 #include <stdio.h> // for sprintf in asserts
 #ifndef VC_EXTRALEAN
 #define VC_EXTRALEAN

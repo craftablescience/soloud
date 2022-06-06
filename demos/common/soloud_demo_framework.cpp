@@ -26,7 +26,7 @@
 */
 
 #include <stdlib.h>
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(_WIN32)
 #include "SDL.h"
 #include <windows.h>
 #include "GL/glew.h"

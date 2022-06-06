@@ -26,7 +26,7 @@ freely, subject to the following restrictions:
 #include <stdlib.h>
 #include <math.h>
 
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(_WIN32)
 #define WINDOWS_VERSION
 #endif
 

@@ -24,7 +24,7 @@ freely, subject to the following restrictions:
 #if defined(WITH_SDL2)
 
 #include <stdlib.h>
-#if defined(_MSC_VER)
+#if defined(_MSC_VER) || defined(_WIN32)
 #define WINDOWS_VERSION
 #endif
 #include "SDL.h"
