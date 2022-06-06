@@ -210,7 +210,7 @@ namespace SoLoud
         format.nAvgBytesPerSec = aSamplerate*sizeof(float)*format.nChannels;
         format.nBlockAlign = sizeof(float)*format.nChannels;
         format.wBitsPerSample = sizeof(float)*8;
-        if (FAILED(XAudio2Create(&data->xaudio2)))
+        if (FAILED(XAudio2Create(&data->xaudio2, 0, XAUDIO2_DEFAULT_PROCESSOR)))
         {
             return UNKNOWN_ERROR;
         }
