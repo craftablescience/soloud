@@ -1410,6 +1410,7 @@ int LofiFilter_setParams(void * aClassPtr, float aSampleRate, float aBitdepth)
 	return cl->setParams(aSampleRate, aBitdepth);
 }
 
+#ifdef WITH_MODPLUG
 void Modplug_destroy(void * aClassPtr)
 {
   delete (Modplug *)aClassPtr;
@@ -1521,6 +1522,7 @@ void Modplug_stop(void * aClassPtr)
 	Modplug * cl = (Modplug *)aClassPtr;
 	cl->stop();
 }
+#endif
 
 void Monotone_destroy(void * aClassPtr)
 {
