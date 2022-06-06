@@ -95,6 +95,50 @@ namespace SoLoud
 #endif
 	}
 
+	void ModplugInstance::seekOrder(unsigned int order)
+	{
+#ifdef WITH_MODPLUG
+		if (mModplugfile != NULL)
+			ModPlug_SeekOrder((ModPlugFile *)mModplugfile, order);
+#endif
+	}
+
+	int ModplugInstance::getCurrentOrder()
+	{
+#ifdef WITH_MODPLUG
+		if (mModplugfile != NULL)
+			return ModPlug_GetCurrentOrder((ModPlugFile *)mModplugfile);
+#endif
+		return -1;
+	}
+
+	int ModplugInstance::getCurrentPattern()
+	{
+#ifdef WITH_MODPLUG
+		if (mModplugfile != NULL)
+			return ModPlug_GetCurrentPattern((ModPlugFile *)mModplugfile);
+#endif
+		return -1;
+	}
+
+	int ModplugInstance::getCurrentRow()
+	{
+#ifdef WITH_MODPLUG
+		if (mModplugfile != NULL)
+			return ModPlug_GetCurrentRow((ModPlugFile *)mModplugfile);
+#endif
+		return -1;
+	}
+
+	int ModplugInstance::getCurrentTempo()
+	{
+#ifdef WITH_MODPLUG
+		if (mModplugfile != NULL)
+			return ModPlug_GetCurrentTempo((ModPlugFile *)mModplugfile);
+#endif
+		return -1;
+	}
+
 	ModplugInstance::~ModplugInstance()
 	{
 #ifdef WITH_MODPLUG

@@ -44,6 +44,12 @@ namespace SoLoud
 		virtual unsigned int getAudio(float *aBuffer, unsigned int aSamplesToRead, unsigned int aBufferSize);
 		virtual bool hasEnded();
 		virtual void mpInit(Modplug *aParent);
+
+		void seekOrder(unsigned int order);
+		int getCurrentOrder();
+		int getCurrentPattern();
+		int getCurrentRow();
+		int getCurrentTempo();
 	};
 
 	class Modplug : public AudioSource
