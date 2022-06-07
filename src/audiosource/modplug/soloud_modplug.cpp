@@ -139,6 +139,15 @@ namespace SoLoud
 		return -1;
 	}
 
+	int ModplugInstance::getCurrentSpeed()
+	{
+#ifdef WITH_MODPLUG
+		if (mModplugfile != NULL)
+			return ModPlug_GetCurrentSpeed((ModPlugFile *)mModplugfile);
+#endif
+		return -1;
+	}
+
 	ModplugInstance::~ModplugInstance()
 	{
 #ifdef WITH_MODPLUG

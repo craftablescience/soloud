@@ -34,6 +34,7 @@ extern "C"
 	int openmpt_module_read_float_stereo(void * mod, int samplerate, size_t count, float * left, float * right);
 	void openmpt_module_set_repeat_count(void* mod, int repeat_count);
 	void openmpt_module_set_position_order_row(void* mod, int order, int row);
+	int openmpt_module_get_current_speed(void* mod);
 	int openmpt_module_get_current_tempo(void* mod);
 	int openmpt_module_get_current_order(void* mod);
 	int openmpt_module_get_current_pattern(void* mod);
@@ -92,6 +93,12 @@ namespace SoLoud
 	{
 		if (mModfile)
 			openmpt_module_set_position_order_row(mModfile, order, row);
+	}
+
+	int OpenmptInstance::getCurrentSpeed()
+	{
+		if (mModfile)
+			return openmpt_module_get_current_speed(mModfile);
 	}
 
 	int OpenmptInstance::getCurrentTempo()

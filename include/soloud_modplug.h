@@ -50,6 +50,7 @@ namespace SoLoud
 		int getCurrentPattern();
 		int getCurrentRow();
 		int getCurrentTempo();
+		int getCurrentSpeed();
 	};
 
 	class Modplug : public AudioSource
