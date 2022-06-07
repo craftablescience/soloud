@@ -73,5 +73,5 @@ print_option_status (SOLOUD_LIBMODPLUG_SUPPORT_STATIC "Enable libmodplug support
 option (SOLOUD_GENERATE_GLUE "Set to ON for generating the Glue APIs" OFF)
 print_option_status (SOLOUD_GENERATE_GLUE "Generate Glue")
 
-option (SOLOUD_BUILD_TOOLS "Set to ON for building SoLoud tools" ON)
+option (SOLOUD_BUILD_TOOLS "Set to ON for building SoLoud tools" OFF)
 print_option_status (SOLOUD_BUILD_TOOLS "SoLoud tools")
