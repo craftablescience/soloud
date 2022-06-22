@@ -26,7 +26,7 @@ print_option_status (SOLOUD_BACKEND_SDL2_STATIC "SDL2 backend (static)")
 option (SOLOUD_BACKEND_JACK "Set to ON for building JACK backend" OFF)
 print_option_status (SOLOUD_BACKEND_JACK "JACK backend")
 
-option (SOLOUD_BACKEND_MINIAUDIO "Set to ON for building miniaudio backend" ON)
+option (SOLOUD_BACKEND_MINIAUDIO "Set to ON for building miniaudio backend" OFF)
 print_option_status (SOLOUD_BACKEND_MINIAUDIO "miniaudio backend")
 
 option (SOLOUD_BACKEND_NOSOUND "Set to ON for building nosound backend" ON)
