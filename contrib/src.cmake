@@ -481,5 +481,12 @@ target_link_libraries (${TARGET_NAME} ${LINK_LIBRARIES})
 
 target_compile_options(${TARGET_NAME} PUBLIC -msse4.1)
 
+get_property(soloud_include_dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
+
+target_include_directories(${TARGET_NAME} PUBLIC
+  "$<BUILD_INTERFACE:${soloud_include_dirs}>"
+  "$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>"
+)
+
 include (Install)
 INSTALL(FILES ${TARGET_HEADERS} DESTINATION include/${TARGET_NAME})
