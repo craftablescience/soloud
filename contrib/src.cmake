@@ -101,7 +101,6 @@ set (AUDIOSOURCES_SOURCES
 	${AUDIOSOURCES_PATH}/sfxr/soloud_sfxr.cpp
 
 	# speech
-	${AUDIOSOURCES_PATH}/speech/Elements.def
 	${AUDIOSOURCES_PATH}/speech/darray.cpp
 	${AUDIOSOURCES_PATH}/speech/darray.h
 	${AUDIOSOURCES_PATH}/speech/klatt.cpp
