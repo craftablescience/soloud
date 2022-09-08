@@ -4,13 +4,10 @@ project (SoLoud)
 
 set (CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake;${CMAKE_MODULE_PATH}")
 set (CMAKE_POSITION_INDEPENDENT_CODE ON)
-#INCLUDE (StandartIncludes)
 
 include_directories (../include)
 
 include (Configure.cmake)
-#INCLUDE (InstallIncludes.cmake)
-#INCLUDE (InstallStaticData.cmake)
 
 if (UNIX AND NOT WIN32 AND NOT APPLE)
 	if (CMAKE_SIZEOF_VOID_P MATCHES "8")
