@@ -13,7 +13,7 @@ print_option_status (SOLOUD_C_API "Build C API")
 option (SOLOUD_BUILD_DEMOS "Set to ON for building demos" OFF)
 print_option_status (SOLOUD_BUILD_DEMOS "Build demos")
 
-option (SOLOUD_BACKEND_NULL "Set to ON for building NULL backend" ON)
+option (SOLOUD_BACKEND_NULL "Set to ON for building NULL backend" OFF)
 print_option_status (SOLOUD_BACKEND_NULL "NULL backend")
 
 option (SOLOUD_BACKEND_SDL2 "Set to ON for building SDL2 backend" OFF)
@@ -21,9 +21,6 @@ print_option_status (SOLOUD_BACKEND_SDL2 "SDL2 backend")
 
 option (SOLOUD_BACKEND_SDL2_STATIC "Set to ON for building static SDL2 backend" OFF)
 print_option_status (SOLOUD_BACKEND_SDL2_STATIC "SDL2 backend (static)")
-
-option (SOLOUD_BACKEND_JACK "Set to ON for building JACK backend" OFF)
-print_option_status (SOLOUD_BACKEND_JACK "JACK backend")
 
 option (SOLOUD_BACKEND_MINIAUDIO "Set to ON for building miniaudio backend" OFF)
 print_option_status (SOLOUD_BACKEND_MINIAUDIO "miniaudio backend")
@@ -46,6 +43,9 @@ print_option_status (SOLOUD_BACKEND_PORTAUDIO "PortAudio backend")
 if (UNIX AND NOT APPLE)
 	option (SOLOUD_BACKEND_ALSA "Set to ON for building ALSA backend" ON)
 	print_option_status (SOLOUD_BACKEND_ALSA "ALSA backend")
+
+	option (SOLOUD_BACKEND_JACK "Set to ON for building JACK backend" ON)
+	print_option_status (SOLOUD_BACKEND_JACK "JACK backend")
 
 elseif (APPLE)
 	option (SOLOUD_BACKEND_COREAUDIO "Set to ON for building CoreAudio backend" ON)
