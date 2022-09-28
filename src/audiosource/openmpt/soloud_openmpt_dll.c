@@ -177,28 +177,33 @@ int openmpt_module_get_current_speed(void* mod)
 {
 	if (load_dll())
 		d_openmpt_module_get_current_speed(mod);
+    return 0;
 }
 
 int openmpt_module_get_current_tempo(void* mod)
 {
 	if (load_dll())
 		d_openmpt_module_get_current_tempo(mod);
+    return 0;
 }
 
 int openmpt_module_get_current_order(void* mod)
 {
 	if (load_dll())
 		d_openmpt_module_get_current_order(mod);
+    return 0;
 }
 
 int openmpt_module_get_current_pattern(void* mod)
 {
 	if (load_dll())
 		d_openmpt_module_get_current_pattern(mod);
+    return 0;
 }
 
 int openmpt_module_get_current_row(void* mod)
 {
 	if (load_dll())
 		d_openmpt_module_get_current_row(mod);
+    return 0;
 }
