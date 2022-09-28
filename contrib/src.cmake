@@ -478,7 +478,7 @@ endif()
 
 target_link_libraries (${TARGET_NAME} ${LINK_LIBRARIES})
 
-target_compile_options(${TARGET_NAME} PUBLIC -msse4.1)
+#target_compile_options(${TARGET_NAME} PUBLIC -msse4.1)
 
 get_property(soloud_include_dirs DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY INCLUDE_DIRECTORIES)
 
