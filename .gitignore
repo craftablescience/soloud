@@ -1,6 +1,7 @@
 .idea/
 .vs/
 .vscode/
+cmake-build-*/
 Debug/
 _UpgradeReport_Files/
 *.ipch
