@@ -99,30 +99,40 @@ namespace SoLoud
 	{
 		if (mModfile)
 			return openmpt_module_get_current_speed(mModfile);
+
+        return SOLOUD_ERRORS::FILE_NOT_FOUND;
 	}
 
 	int OpenmptInstance::getCurrentTempo()
 	{
 		if (mModfile)
 			return openmpt_module_get_current_tempo(mModfile);
+
+        return SOLOUD_ERRORS::FILE_NOT_FOUND;
 	}
 
 	int OpenmptInstance::getCurrentOrder()
 	{
 		if (mModfile)
 			return openmpt_module_get_current_order(mModfile);
+
+        return SOLOUD_ERRORS::FILE_NOT_FOUND;
 	}
 
 	int OpenmptInstance::getCurrentPattern()
 	{
 		if (mModfile)
 			return openmpt_module_get_current_pattern(mModfile);
+
+        return SOLOUD_ERRORS::FILE_NOT_FOUND;
 	}
 
 	int OpenmptInstance::getCurrentRow()
 	{
 		if (mModfile)
 			return openmpt_module_get_current_row(mModfile);
+
+        return SOLOUD_ERRORS::FILE_NOT_FOUND;
 	}
 
 	result Openmpt::loadMem(const unsigned char *aMem, unsigned int aLength, bool aCopy, bool aTakeOwnership)
