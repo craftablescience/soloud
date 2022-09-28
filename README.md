@@ -7,7 +7,7 @@ SoLoud is an easy to use, free, portable c/c++ audio engine for games.
 
 Zlib/LibPng licensed. Portable. Easy.
 
-This fork reimplements modplug support.
+This fork adds CMake support and fixes problems building with C++20.
 
 Official site with documentation can be found at:
  http://soloud-audio.com

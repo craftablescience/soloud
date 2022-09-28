@@ -1,3 +1,6 @@
+.idea/
+.vs/
+.vscode/
 Debug/
 _UpgradeReport_Files/
 *.ipch
