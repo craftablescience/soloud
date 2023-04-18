@@ -83,7 +83,7 @@ extern "C" __declspec(dllimport) void __stdcall OutputDebugStringA(char const* l
 #define SAMPLE_GRANULARITY 512
 
 // Maximum number of concurrent voices (hard limit is 4095)
-#define VOICE_COUNT 1024
+#define VOICE_COUNT 4095
 
 // 1)mono, 2)stereo 4)quad 6)5.1 8)7.1
 #define MAX_CHANNELS 8
